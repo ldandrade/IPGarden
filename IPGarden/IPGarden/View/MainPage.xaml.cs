@@ -16,14 +16,14 @@ namespace IPGarden.View
         {
             // Dictionary to get Color from color name.
             List<Station> stations = new List<Station>();
-            stations.Add(new Station("Empty", 1, false, 0));
-            stations.Add(new Station("Empty", 2, false, 0));
-            stations.Add(new Station("Greenhouse", 3, false, 10));
-            stations.Add(new Station("Veggies Garden", 4, false, 10));
-            stations.Add(new Station("Orchard (lower area)", 5, false, 10));
-            stations.Add(new Station("Orchard (upper area)", 6, false, 10));
-            stations.Add(new Station("Front Garden", 7, false, 10));
-            stations.Add(new Station("Empty", 8, false, 0));
+            stations.Add(new Station("Vazio", 1, false, 0));
+            stations.Add(new Station("Vazio", 2, false, 0));
+            stations.Add(new Station("Horta", 3, false, 10));
+            stations.Add(new Station("Estufa", 4, false, 10));
+            stations.Add(new Station("Pomar (área alta)", 5, false, 10));
+            stations.Add(new Station("Pomar (área baixa)", 6, false, 10));
+            stations.Add(new Station("Vazio", 7, false, 10));
+            stations.Add(new Station("Jardim frontal", 8, false, 0));
 
             InitializeComponent();
 
@@ -31,9 +31,15 @@ namespace IPGarden.View
         }
 
 
-        private void OnItemToggled(object sender, ToggledEventArgs e)
+        private async void OnItemToggled(object sender, ToggledEventArgs e)
         {
-
+            SwitchCell toggledSwitch = (SwitchCell)sender;
+            string stationID = toggledSwitch.Text.Substring(0, toggledSwitch.Text.IndexOf(" "));
+            bool success = await App.restService.ActivateSwitchAsync(stationID);
+            if (success)
+                await DisplayAlert("Info", string.Concat("Station ",stationID," activated"), "OK");
+            else
+                await DisplayAlert("Info", string.Concat("Station ", stationID, " deactivated"), "OK");
         }
     }
 }

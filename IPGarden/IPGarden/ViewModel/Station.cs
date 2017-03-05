@@ -9,16 +9,18 @@ namespace IPGarden.ViewModel
     class Station
     {
         private String name;
-        private int number;
+        private int id;
         private bool active;
         private int wateringTime;
+        private string fullName;
 
         public Station(string name, int number, bool active, int wateringTime)
         {
             this.name = name;
-            this.number = number;
+            this.id = number;
             this.active = active;
             this.WateringTime = wateringTime;
+            this.FullName = string.Concat(id, " - ", name);
         }
 
         public string Name
@@ -38,12 +40,12 @@ namespace IPGarden.ViewModel
         {
             get
             {
-                return number;
+                return id;
             }
 
             set
             {
-                number = value;
+                id = value;
             }
         }
 
@@ -70,6 +72,19 @@ namespace IPGarden.ViewModel
             set
             {
                 wateringTime = value;
+            }
+        }
+
+        public string FullName
+        {
+            get
+            {
+                return fullName;
+            }
+
+            set
+            {
+                fullName = value;
             }
         }
     }

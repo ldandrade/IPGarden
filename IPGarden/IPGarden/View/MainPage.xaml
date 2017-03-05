@@ -34,20 +34,7 @@
             <ListView x:Name="stationsList" BackgroundColor="Transparent" ItemsSource="stations">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="{Binding Number}" VerticalOptions="Center" HorizontalOptions="End"  />
-                                <Label Grid.Column="1" Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
-                                <Entry Grid.Column="2" Text="{Binding WateringTime}" HorizontalOptions="Fill" />
-                                <Switch Grid.Column="3" IsToggled="{Binding Active}" HorizontalOptions="Start" Toggled="OnItemToggled"/>
-                            </Grid>
-                        </ViewCell>
+                        <SwitchCell Text="{Binding FullName}" OnChanged="OnItemToggled"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
