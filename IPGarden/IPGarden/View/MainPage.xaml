@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:IPGarden.View;assembly=IPGarden.View"
+             x:Class="IPGarden.View.MainPage"
+             Title="Dashboard">
+
+    <ContentPage.Content>
+        <StackLayout Margin="10,10,10,10">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Weather Conditions" VerticalOptions="Center"/>
+            </StackLayout>
+            <Grid>
+                <Label Grid.Row="0" Grid.Column="0" Text="Temperature" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="27" VerticalOptions="Center"/>
+                <Button Grid.Row="0" Grid.Column="2" Text="History"/>
+                <Label Grid.Row="1" Grid.Column="0" Text="Humidity" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="61" VerticalOptions="Center"/>
+                <Button Grid.Row="1" Grid.Column="2" Text="History"/>
+            </Grid>
+            <Label Text="Stations" HorizontalOptions="CenterAndExpand"/>
+            <Grid Margin="10,10,10,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="#" VerticalOptions="Center" HorizontalOptions="End" />
+                <Label Grid.Column="1" Text="Name" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+                <Label Grid.Column="2" Text="Min" VerticalOptions="Center" HorizontalOptions="Fill" />
+                <Label Grid.Column="3" Text="Active" VerticalOptions="Center" HorizontalOptions="Start" />
+            </Grid>
+            <ListView x:Name="stationsList" BackgroundColor="Transparent" ItemsSource="stations">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Number}" VerticalOptions="Center" HorizontalOptions="End"  />
+                                <Label Grid.Column="1" Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+                                <Entry Grid.Column="2" Text="{Binding WateringTime}" HorizontalOptions="Fill" />
+                                <Switch Grid.Column="3" IsToggled="{Binding Active}" HorizontalOptions="Start" Toggled="OnItemToggled"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Add" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Edit" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Remove" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Run" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

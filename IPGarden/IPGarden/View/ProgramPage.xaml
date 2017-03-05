@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IPGarden.View.ProgramPage"
+             Title="Program">
+    <ContentPage.Content>
+        <StackLayout Margin="10,10,10,10">
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Sync Device" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Unsync Device" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <Label Text="Events" HorizontalOptions="CenterAndExpand"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="#" VerticalOptions="Center" HorizontalOptions="End" />
+                <Label Grid.Column="1" Text="Name" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+                <Label Grid.Column="2" Text="Min" VerticalOptions="Center" HorizontalOptions="Fill" />
+                <Label Grid.Column="3" Text="Start" VerticalOptions="Center" HorizontalOptions="Start" />
+                <Label Grid.Column="4" Text="Days" VerticalOptions="Center" HorizontalOptions="Start" />
+            </Grid>
+            <ListView x:Name="stationsList" BackgroundColor="Transparent" ItemsSource="stations">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Number}" VerticalOptions="Center" HorizontalOptions="End" />
+                                <Label Grid.Column="1" Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+                                <Label Grid.Column="2" Text="{Binding WateringTime}" HorizontalOptions="Fill" />
+                                <Label Grid.Column="3" Text="{Binding StartTime}" HorizontalOptions="Start" />
+                                <Label Grid.Column="4" Text="{Binding Days}" HorizontalOptions="Start" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Add" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Edit" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Remove" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
