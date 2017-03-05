@@ -6,33 +6,33 @@ using System.Threading.Tasks;
 
 namespace IPGarden.ViewModel
 {
-    class RelayItem
+    class HumSensor
     {
-        private int return_value;
+        private int humidity;
         private string id;
         private string name;
         private string hardware;
         private bool connected;
 
-        public RelayItem(int return_value, string id, string name, string hardware, bool connected)
+        public HumSensor(int humidity, string id, string name, string hardware, bool connected)
         {
-            this.return_value = return_value;
+            this.humidity = humidity;
             this.id = id;
             this.name = name;
             this.hardware = hardware;
             this.connected = connected;
         }
 
-        public int Return_value
+        public int Humidity
         {
             get
             {
-                return return_value;
+                return humidity;
             }
 
             set
             {
-                return_value = value;
+                humidity = value;
             }
         }
 

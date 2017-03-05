@@ -39,8 +39,10 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ArduinoRestService.cs" />
-    <Compile Include="ViewModel\RelayItem.cs" />
+    <Compile Include="ViewModel\HumSensor.cs" />
+    <Compile Include="ViewModel\RelayPanel.cs" />
     <Compile Include="ViewModel\Station.cs" />
+    <Compile Include="ViewModel\TempSensor.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

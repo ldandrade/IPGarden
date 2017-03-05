@@ -10,26 +10,28 @@
             <StackLayout Orientation="Horizontal">
                 <Label Text="Weather Conditions" VerticalOptions="Center"/>
             </StackLayout>
-            <Grid>
-                <Label Grid.Row="0" Grid.Column="0" Text="Temperature" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
-                <Label Grid.Row="0" Grid.Column="1" Text="27" VerticalOptions="Center"/>
-                <Button Grid.Row="0" Grid.Column="2" Text="History"/>
-                <Label Grid.Row="1" Grid.Column="0" Text="Humidity" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
-                <Label Grid.Row="1" Grid.Column="1" Text="61" VerticalOptions="Center"/>
-                <Button Grid.Row="1" Grid.Column="2" Text="History"/>
-            </Grid>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Temperature" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                <Label x:Name="labelTempValue" Text="0" VerticalOptions="Center"/>
+                <Label Text="Humidity" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                <Label x:Name="labelHumValue" Text="0" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="History"/>
+                <Button Text="Refresh" Clicked="RefreshButtonClicked"/>
+                <ActivityIndicator x:Name="sensorActivityIndicator" Grid.Row="1" Grid.Column="2" IsVisible="True" IsRunning="False" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
             <Label Text="Stations" HorizontalOptions="CenterAndExpand"/>
+            <ProgressBar x:Name="wateringProgressBar" IsVisible="True"/>
             <Grid Margin="10,10,10,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Text="#" VerticalOptions="Center" HorizontalOptions="End" />
                 <Label Grid.Column="1" Text="Name" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
-                <Label Grid.Column="2" Text="Min" VerticalOptions="Center" HorizontalOptions="Fill" />
-                <Label Grid.Column="3" Text="Active" VerticalOptions="Center" HorizontalOptions="Start" />
+                <Label Grid.Column="2" Text="Active" VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
             </Grid>
             <ListView x:Name="stationsList" BackgroundColor="Transparent" ItemsSource="stations">
                 <ListView.ItemTemplate>
@@ -42,7 +44,6 @@
                 <Button Text="Add" HorizontalOptions="FillAndExpand"/>
                 <Button Text="Edit" HorizontalOptions="FillAndExpand"/>
                 <Button Text="Remove" HorizontalOptions="FillAndExpand"/>
-                <Button Text="Run" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

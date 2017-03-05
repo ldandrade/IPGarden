@@ -35,11 +35,23 @@ namespace IPGarden.View
         {
             SwitchCell toggledSwitch = (SwitchCell)sender;
             string stationID = toggledSwitch.Text.Substring(0, toggledSwitch.Text.IndexOf(" "));
-            bool success = await App.restService.ActivateSwitchAsync(stationID);
-            if (success)
+            int status = await App.restService.ActivateSwitchAsync(stationID);
+            if (status==1)
                 await DisplayAlert("Info", string.Concat("Station ",stationID," activated"), "OK");
-            else
+            else if (status==0)
                 await DisplayAlert("Info", string.Concat("Station ", stationID, " deactivated"), "OK");
+            else if (status==-1)
+                await DisplayAlert("Error", string.Concat("Failed to activate station ", stationID), "OK");
+        }
+
+        private async void RefreshButtonClicked(object sender, EventArgs e)
+        {
+            sensorActivityIndicator.IsRunning = true;
+            int temperature = await App.restService.ReadTemperatureAsync();
+            int humidity = await App.restService.ReadHumidityAsync();
+            labelTempValue.Text = temperature.ToString();
+            labelHumValue.Text = humidity.ToString();
+            sensorActivityIndicator.IsRunning = false;
         }
     }
 }
