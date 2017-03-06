@@ -8,9 +8,9 @@
     <ProjectGuid>{CBA190B0-3F49-4780-91F6-17E2FA50DEDB}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
-    <RootNamespace>IPGarden.iOS</RootNamespace>
+    <RootNamespace>Irrigatus.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>IPGarden.iOS</AssemblyName>
+    <AssemblyName>Irrigatus.iOS</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -139,7 +139,7 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IPGarden\Irrigatus.csproj">
+    <ProjectReference Include="..\Irrigatus\Irrigatus.csproj">
       <Project>{08A10C2C-EE42-49F7-86E2-ADED56AAFD84}</Project>
       <Name>Irrigatus</Name>
     </ProjectReference>

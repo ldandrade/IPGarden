@@ -7,8 +7,8 @@
     <ProjectGuid>{46114E0A-A447-4CEA-AFF5-940A7830FA56}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IPGarden.UWP</RootNamespace>
-    <AssemblyName>IPGarden.UWP</AssemblyName>
+    <RootNamespace>Irrigatus.UWP</RootNamespace>
+    <AssemblyName>Irrigatus.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
@@ -17,7 +17,7 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>IPGarden.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>Irrigatus.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
     <PackageCertificateThumbprint>C4C6C7D42AC10E8E1F9D61C633D6DF7CE336D0EE</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
@@ -107,7 +107,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="IPGarden.UWP_TemporaryKey.pfx" />
+    <None Include="Irrigatus.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
@@ -154,7 +154,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IPGarden\Irrigatus.csproj">
+    <ProjectReference Include="..\Irrigatus\Irrigatus.csproj">
       <Project>{08A10C2C-EE42-49F7-86E2-ADED56AAFD84}</Project>
       <Name>Irrigatus</Name>
     </ProjectReference>

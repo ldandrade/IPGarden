@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IPGarden.Droid</RootNamespace>
-    <AssemblyName>IPGarden.Android</AssemblyName>
+    <RootNamespace>Irrigatus.Droid</RootNamespace>
+    <AssemblyName>Irrigatus.Android</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
@@ -161,7 +161,7 @@
     <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IPGarden\Irrigatus.csproj">
+    <ProjectReference Include="..\Irrigatus\Irrigatus.csproj">
       <Project>{08A10C2C-EE42-49F7-86E2-ADED56AAFD84}</Project>
       <Name>Irrigatus</Name>
     </ProjectReference>

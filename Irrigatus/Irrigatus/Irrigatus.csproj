@@ -8,8 +8,8 @@
     <ProjectGuid>{08A10C2C-EE42-49F7-86E2-ADED56AAFD84}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IPGarden</RootNamespace>
-    <AssemblyName>IPGarden</AssemblyName>
+    <RootNamespace>Irrigatus</RootNamespace>
+    <AssemblyName>Irrigatus</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
@@ -38,7 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Database\IPGardenDatabase.cs" />
+    <Compile Include="Database\IrrigatusDatabase.cs" />
     <Compile Include="IFileHelper.cs" />
     <Compile Include="Model\SensorMeasure.cs" />
     <Compile Include="Model\SensorPanel.cs" />

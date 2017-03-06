@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Irrigatus.Android", "IPGarden\IPGarden.Android\Irrigatus.Android.csproj", "{84CE37EC-3A33-489E-860E-96BA38AA0A3F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Irrigatus.Android", "Irrigatus\Irrigatus.Android\Irrigatus.Android.csproj", "{84CE37EC-3A33-489E-860E-96BA38AA0A3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Irrigatus", "IPGarden\IPGarden\Irrigatus.csproj", "{08A10C2C-EE42-49F7-86E2-ADED56AAFD84}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Irrigatus", "Irrigatus\Irrigatus\Irrigatus.csproj", "{08A10C2C-EE42-49F7-86E2-ADED56AAFD84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Irrigatus.UWP", "IPGarden\IPGarden.UWP\Irrigatus.UWP.csproj", "{46114E0A-A447-4CEA-AFF5-940A7830FA56}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Irrigatus.UWP", "Irrigatus\Irrigatus.UWP\Irrigatus.UWP.csproj", "{46114E0A-A447-4CEA-AFF5-940A7830FA56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Irrigatus.iOS", "IPGarden\IPGarden.iOS\Irrigatus.iOS.csproj", "{CBA190B0-3F49-4780-91F6-17E2FA50DEDB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Irrigatus.iOS", "Irrigatus\Irrigatus.iOS\Irrigatus.iOS.csproj", "{CBA190B0-3F49-4780-91F6-17E2FA50DEDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
