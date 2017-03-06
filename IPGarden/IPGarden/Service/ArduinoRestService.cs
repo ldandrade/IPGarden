@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 using IPGarden.Model;
 
-namespace IPGarden.ViewModel
+namespace IPGarden.Service
 {
     public class ArduinoRestService
     {

@@ -6,6 +6,7 @@ using System.Text;
 using IPGarden.View;
 using IPGarden.ViewModel;
 using IPGarden.Database;
+using IPGarden.Service;
 
 using Xamarin.Forms;
 

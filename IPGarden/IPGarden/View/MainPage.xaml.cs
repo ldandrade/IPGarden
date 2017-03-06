@@ -16,7 +16,7 @@ namespace IPGarden.View
         public MainPage()
         {
             // Dictionary to get Color from color name.
-            List<WateringStation> stations = new List<WateringStation>();
+            /**List<WateringStation> stations = new List<WateringStation>();
             stations.Add(new WateringStation("Vazio", 1, false, 0));
             stations.Add(new WateringStation("Vazio", 2, false, 0));
             stations.Add(new WateringStation("Horta", 3, false, 10));
@@ -24,11 +24,11 @@ namespace IPGarden.View
             stations.Add(new WateringStation("Pomar (área alta)", 5, false, 10));
             stations.Add(new WateringStation("Pomar (área baixa)", 6, false, 10));
             stations.Add(new WateringStation("Vazio", 7, false, 10));
-            stations.Add(new WateringStation("Jardim frontal", 8, false, 0));
+            stations.Add(new WateringStation("Jardim frontal", 8, false, 0));**/
 
             InitializeComponent();
 
-            stationsList.ItemsSource = stations;
+            //stationsList.ItemsSource = stations;
         }
 
 
@@ -53,6 +53,22 @@ namespace IPGarden.View
             labelTempValue.Text = temperature.ToString();
             labelHumValue.Text = humidity.ToString();
             sensorActivityIndicator.IsRunning = false;
+        }
+
+        private async void AddButtonClicked(object sender, EventArgs e)
+        {
+            var addWateringStationModalPage = new AddEditWateringStationModalPage();
+            await Navigation.PushModalAsync(addWateringStationModalPage);
+        }
+
+        private void EditButtonClicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeleteButtonClicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

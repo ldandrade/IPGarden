@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IPGarden.View.AddEditWateringStationModalPage">
+    <ContentPage.Content>
+        <TableView Intent="Form">
+            <TableRoot>
+                <TableSection x:Name="TableSectionNewWateringStation" Title="Add new watering station:">
+                    <EntryCell x:Name="entryRelayPanelStationNumber" Label="Relay Panel Station Number:" Keyboard="Text"/>
+                    <EntryCell x:Name="entryWateringStationName" Label="Watering Station Name:" Keyboard="Text"/>
+                    <EntryCell x:Name="entryWateringTime" Label="Watering Time:" Keyboard="Numeric"/>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Button Text="Ok" Clicked="OkButtonClicked" HorizontalOptions="FillAndExpand"/>
+                            <Button Text="Cancel" Clicked="CancelButtonClicked" HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>

@@ -33,17 +33,17 @@
                 <Label Grid.Column="1" Text="Name" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
                 <Label Grid.Column="2" Text="Active" VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
             </Grid>
-            <ListView x:Name="stationsList" BackgroundColor="Transparent" ItemsSource="stations">
+            <ListView x:Name="stationsList" BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <SwitchCell Text="{Binding fullName}" OnChanged="OnItemToggled"/>
+                        <SwitchCell OnChanged="OnItemToggled"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <StackLayout Orientation="Horizontal">
-                <Button Text="Add" HorizontalOptions="FillAndExpand"/>
-                <Button Text="Edit" HorizontalOptions="FillAndExpand"/>
-                <Button Text="Remove" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Add" HorizontalOptions="FillAndExpand" Clicked="AddButtonClicked"/>
+                <Button Text="Edit" HorizontalOptions="FillAndExpand" Clicked="EditButtonClicked"/>
+                <Button Text="Delete" HorizontalOptions="FillAndExpand" Clicked="DeleteButtonClicked"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
