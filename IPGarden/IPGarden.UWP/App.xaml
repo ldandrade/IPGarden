@@ -1,8 +1,8 @@
 ﻿<Application
-    x:Class="IPGarden.UWP.App"
+    x:Class="Irrigatus.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:IPGarden.UWP"
+    xmlns:local="using:Irrigatus.UWP"
     RequestedTheme="Light">
 
 </Application>

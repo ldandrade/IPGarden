@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace IPGarden.UWP
+namespace Irrigatus.UWP
 {
     public sealed partial class MainPage
     {
@@ -21,7 +21,7 @@ namespace IPGarden.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new IPGarden.App());
+            LoadApplication(new Irrigatus.App());
         }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using IPGarden.Model;
+using Irrigatus.Model;
 
-namespace IPGarden.ViewModel
+namespace Irrigatus.ViewModel
 {
     public class WateringStationViewModel
     {

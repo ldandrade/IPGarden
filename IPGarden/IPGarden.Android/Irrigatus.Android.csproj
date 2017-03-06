@@ -161,9 +161,9 @@
     <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IPGarden\IPGarden.csproj">
-      <Project>{af36f6f0-b0a6-47ef-8bd1-7555a0517bbc}</Project>
-      <Name>IPGarden</Name>
+    <ProjectReference Include="..\IPGarden\Irrigatus.csproj">
+      <Project>{08A10C2C-EE42-49F7-86E2-ADED56AAFD84}</Project>
+      <Name>Irrigatus</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

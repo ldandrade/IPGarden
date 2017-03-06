@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-using IPGarden.Model;
+using Irrigatus.Model;
 
-namespace IPGarden.Service
+namespace Irrigatus.Service
 {
     public class ArduinoRestService
     {

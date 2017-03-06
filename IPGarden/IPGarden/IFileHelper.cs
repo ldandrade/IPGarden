@@ -1,5 +1,5 @@
 ﻿
-namespace IPGarden
+namespace Irrigatus
 {
     public interface IFileHelper
     {

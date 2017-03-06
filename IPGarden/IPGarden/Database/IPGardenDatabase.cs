@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
-using IPGarden.Model;
+using Irrigatus.Model;
 
-namespace IPGarden.Database
+namespace Irrigatus.Database
 {
-    public class IPGardenDatabase
+    public class IrrigatusDatabase
     {
         readonly SQLiteAsyncConnection database;
 
-        public IPGardenDatabase(string dbPath)
+        public IrrigatusDatabase(string dbPath)
         {
             database = new SQLiteAsyncConnection(dbPath);
             database.CreateTableAsync<SensorMeasure>().Wait();

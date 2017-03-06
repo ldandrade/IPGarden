@@ -8,7 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 
-namespace IPGarden.View
+namespace Irrigatus.View
 {
 
     public partial class RootPage : TabbedPage

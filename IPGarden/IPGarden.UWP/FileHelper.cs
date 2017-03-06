@@ -1,4 +1,4 @@
-﻿using IPGarden.UWP;
+﻿using Irrigatus.UWP;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +9,7 @@ using Windows.Storage;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(FileHelper))]
-namespace IPGarden.UWP
+namespace Irrigatus.UWP
 {
     class FileHelper : IFileHelper
     {

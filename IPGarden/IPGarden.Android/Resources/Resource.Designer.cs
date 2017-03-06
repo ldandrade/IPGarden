@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("IPGarden.Droid.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("Irrigatus.Droid.Resource", IsApplication=true)]
 
-namespace IPGarden.Droid
+namespace Irrigatus.Droid
 {
 	
 	
@@ -26,7 +26,7 @@ namespace IPGarden.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::IPGarden.Droid.Resource.Attribute.actionBarSize;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Irrigatus.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using IPGarden.Model;
-using IPGarden.ViewModel;
+using Irrigatus.Model;
+using Irrigatus.ViewModel;
 
 using Xamarin.Forms;
 
-namespace IPGarden.View
+namespace Irrigatus.View
 {
     public partial class MainPage : ContentPage
     {

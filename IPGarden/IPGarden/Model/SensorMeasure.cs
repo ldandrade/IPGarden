@@ -1,6 +1,6 @@
 ﻿using SQLite;
 
-namespace IPGarden.Model
+namespace Irrigatus.Model
 {
     public class SensorMeasure
     {

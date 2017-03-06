@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using IPGarden.ViewModel;
+using Irrigatus.ViewModel;
 
-namespace IPGarden.View
+namespace Irrigatus.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddEditWateringStationModalPage : ContentPage

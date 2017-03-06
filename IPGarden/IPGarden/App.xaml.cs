@@ -3,35 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using IPGarden.View;
-using IPGarden.ViewModel;
-using IPGarden.Database;
-using IPGarden.Service;
+using Irrigatus.View;
+using Irrigatus.ViewModel;
+using Irrigatus.Database;
+using Irrigatus.Service;
 
 using Xamarin.Forms;
 
-namespace IPGarden
+namespace Irrigatus
 {
     public partial class App : Application
     {
         public static ArduinoRestService restService;
-        static IPGardenDatabase database;
+        static IrrigatusDatabase database;
 
         public App()
         {
             InitializeComponent();
 
-            MainPage = new IPGarden.View.RootPage();
+            MainPage = new Irrigatus.View.RootPage();
             restService = new ArduinoRestService();
         }
 
-        public static IPGardenDatabase Database
+        public static IrrigatusDatabase Database
         {
             get
             {
                 if (database == null)
                 {
-                    database = new IPGardenDatabase(DependencyService.Get<IFileHelper>().GetLocalFilePath("IPGardenSQLite.db3"));
+                    database = new IrrigatusDatabase(DependencyService.Get<IFileHelper>().GetLocalFilePath("IPGardenSQLite.db3"));
                 }
                 return database;
             }

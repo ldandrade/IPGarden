@@ -1,10 +1,10 @@
-﻿using IPGarden.Droid;
+﻿using Irrigatus.Droid;
 using System;
 using System.IO;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(FileHelper))]
-namespace IPGarden.Droid
+namespace Irrigatus.Droid
 {
     public class FileHelper : IFileHelper
     {

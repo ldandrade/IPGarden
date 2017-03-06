@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace IPGarden.iOS
+namespace Irrigatus.iOS
 {
     public class Application
     {
