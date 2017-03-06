@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using IPGarden.Model;
 using IPGarden.ViewModel;
 
 using Xamarin.Forms;
@@ -15,15 +16,15 @@ namespace IPGarden.View
         public MainPage()
         {
             // Dictionary to get Color from color name.
-            List<Station> stations = new List<Station>();
-            stations.Add(new Station("Vazio", 1, false, 0));
-            stations.Add(new Station("Vazio", 2, false, 0));
-            stations.Add(new Station("Horta", 3, false, 10));
-            stations.Add(new Station("Estufa", 4, false, 10));
-            stations.Add(new Station("Pomar (área alta)", 5, false, 10));
-            stations.Add(new Station("Pomar (área baixa)", 6, false, 10));
-            stations.Add(new Station("Vazio", 7, false, 10));
-            stations.Add(new Station("Jardim frontal", 8, false, 0));
+            List<WateringStation> stations = new List<WateringStation>();
+            stations.Add(new WateringStation("Vazio", 1, false, 0));
+            stations.Add(new WateringStation("Vazio", 2, false, 0));
+            stations.Add(new WateringStation("Horta", 3, false, 10));
+            stations.Add(new WateringStation("Estufa", 4, false, 10));
+            stations.Add(new WateringStation("Pomar (área alta)", 5, false, 10));
+            stations.Add(new WateringStation("Pomar (área baixa)", 6, false, 10));
+            stations.Add(new WateringStation("Vazio", 7, false, 10));
+            stations.Add(new WateringStation("Jardim frontal", 8, false, 0));
 
             InitializeComponent();
 

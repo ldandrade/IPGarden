@@ -36,7 +36,7 @@
             <ListView x:Name="stationsList" BackgroundColor="Transparent" ItemsSource="stations">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <SwitchCell Text="{Binding FullName}" OnChanged="OnItemToggled"/>
+                        <SwitchCell Text="{Binding fullName}" OnChanged="OnItemToggled"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
+using IPGarden.Model;
+
 namespace IPGarden.ViewModel
 {
     public class ArduinoRestService
@@ -15,47 +17,7 @@ namespace IPGarden.ViewModel
         HttpClient client;
         static Uri baseUri = new Uri("http://192.168.0.101/");
         RelayPanel relayPanel;
-        TempSensor tempSensor;
-        HumSensor humSensor;
-
-        internal RelayPanel RelayPanel
-        {
-            get
-            {
-                return relayPanel;
-            }
-
-            set
-            {
-                relayPanel = value;
-            }
-        }
-
-        internal TempSensor TempSensor
-        {
-            get
-            {
-                return tempSensor;
-            }
-
-            set
-            {
-                tempSensor = value;
-            }
-        }
-
-        internal HumSensor HumSensor
-        {
-            get
-            {
-                return humSensor;
-            }
-
-            set
-            {
-                humSensor = value;
-            }
-        }
+        SensorPanel sensorPanel;
 
         public ArduinoRestService()
         {
@@ -74,54 +36,50 @@ namespace IPGarden.ViewModel
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    RelayPanel = JsonConvert.DeserializeObject<RelayPanel>(content);
+                    relayPanel = JsonConvert.DeserializeObject<RelayPanel>(content);
                 }
             }
             catch (Exception ex)
             {
                 return -1;
             }
-            return RelayPanel.Return_value;
+            return relayPanel.return_value;
         }
 
         public async Task<int> ReadTemperatureAsync()
         {
-            Uri uri = new Uri(baseUri, "temperature");
-
             try
             {
-                var response = await client.GetAsync(uri);
+                var response = await client.GetAsync(baseUri);
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    tempSensor = JsonConvert.DeserializeObject<TempSensor>(content);
+                    sensorPanel = JsonConvert.DeserializeObject<SensorPanel>(content);
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(@"				ERROR {0}", ex.Message);
             }
-            return tempSensor.Temperature;
+            return sensorPanel.variables.temperature;
         }
 
         public async Task<int> ReadHumidityAsync()
         {
-            Uri uri = new Uri(baseUri, "humidity");
-
             try
             {
-                var response = await client.GetAsync(uri);
+                var response = await client.GetAsync(baseUri);
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    humSensor = JsonConvert.DeserializeObject<HumSensor>(content);
+                    sensorPanel = JsonConvert.DeserializeObject<SensorPanel>(content);
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(@"				ERROR {0}", ex.Message);
             }
-            return humSensor.Humidity;
+            return sensorPanel.variables.humidity;
         }
     }
 }
