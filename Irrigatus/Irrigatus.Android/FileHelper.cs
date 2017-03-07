@@ -10,8 +10,9 @@ namespace Irrigatus.Droid
     {
         public string GetLocalFilePath(string filename)
         {
-            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            return Path.Combine(documentsPath, filename);
+            //string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            //return Path.Combine(documentsPath, filename);
+            return Path.Combine("/mnt/sdcard", filename);
         }
     }
 }

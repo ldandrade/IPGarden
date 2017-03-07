@@ -52,6 +52,7 @@ namespace Irrigatus.View
         private async void AddButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddEditWateringStationModalPage());
+            stationsList.ItemsSource = await AllWateringStationViewModel.RetrieveWateringStationsAsync();
         }
 
         private void EditButtonClicked(object sender, EventArgs e)

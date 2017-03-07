@@ -7,7 +7,7 @@ namespace Irrigatus.Database
 {
     public class IrrigatusDatabase
     {
-        readonly SQLiteAsyncConnection database;
+        SQLiteAsyncConnection database;
 
         public IrrigatusDatabase(string dbPath)
         {
@@ -27,15 +27,16 @@ namespace Irrigatus.Database
             return database.Table<WateringStation>().Where(i => i.guid == guid).FirstOrDefaultAsync();
         }
 
-        public Task<int> SaveWateringStationAsync(WateringStation wateringStation)
+        public async Task<int> SaveWateringStationAsync(WateringStation wateringStation)
         {
-            if (wateringStation.guid != string.Empty)
+            WateringStation existingStation = await database.Table<WateringStation>().Where(i => i.guid == wateringStation.guid).FirstOrDefaultAsync();
+            if (existingStation != null)
             {
-                return database.UpdateAsync(wateringStation);
+                return database.UpdateAsync(wateringStation).Result;
             }
             else
             {
-                return database.InsertAsync(wateringStation);
+                return database.InsertAsync(wateringStation).Result;
             }
         }
     }

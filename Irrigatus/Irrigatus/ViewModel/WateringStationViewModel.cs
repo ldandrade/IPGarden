@@ -23,17 +23,19 @@ namespace Irrigatus.ViewModel
             this.active = false;
         }
 
-        public bool SaveWateringStation()
+        public async Task<bool> SaveWateringStation()
         {
+            int result = 0;
             WateringStation wateringStation = new WateringStation();
             wateringStation.guid = this.guid;
             wateringStation.number = this.number;
             wateringStation.name = this.name;
             wateringStation.wateringTime = this.wateringTime;
+            this.fullName = String.Concat(this.number, " - ", this.name);
             wateringStation.fullName = String.Concat(this.number, " - ", this.name);
             try
             {
-                App.Database.SaveWateringStationAsync(wateringStation);
+                result = await App.Database.SaveWateringStationAsync(wateringStation);
             }
             catch
             {

@@ -21,6 +21,7 @@ namespace Irrigatus.ViewModel
             WateringStationViewModel stationViewModel = new WateringStationViewModel();
             foreach (WateringStation station in wateringStations)
             {
+                stationViewModel = new WateringStationViewModel();
                 stationViewModel.guid = station.guid;
                 stationViewModel.number = station.number;
                 stationViewModel.name = station.name;

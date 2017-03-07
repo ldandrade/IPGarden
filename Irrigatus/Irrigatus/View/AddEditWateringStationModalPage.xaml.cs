@@ -34,7 +34,8 @@ namespace Irrigatus.View
             wateringStationViewModel.number = Int32.Parse(entryRelayPanelStationNumber.Text);
             wateringStationViewModel.name = entryWateringStationName.Text;
             wateringStationViewModel.wateringTime = Int32.Parse(entryWateringTime.Text);
-            if (wateringStationViewModel.SaveWateringStation())
+            bool stationAdded = await wateringStationViewModel.SaveWateringStation();
+            if (stationAdded)
                 await DisplayAlert("Info", string.Concat("Station ", wateringStationViewModel.fullName, " added."), "OK");
             await Navigation.PopAsync();
         }

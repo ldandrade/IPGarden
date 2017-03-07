@@ -24,6 +24,9 @@
             <Label Text="Stations" HorizontalOptions="CenterAndExpand"/>
             <ProgressBar x:Name="wateringProgressBar" IsVisible="True"/>
             <Grid Margin="10,10,10,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>

@@ -31,7 +31,7 @@ namespace Irrigatus
             {
                 if (database == null)
                 {
-                    database = new IrrigatusDatabase(DependencyService.Get<IFileHelper>().GetLocalFilePath("IPGardenSQLite.db3"));
+                    database = new IrrigatusDatabase(DependencyService.Get<IFileHelper>().GetLocalFilePath("IrrigatusDB.db3"));
                 }
                 return database;
             }
