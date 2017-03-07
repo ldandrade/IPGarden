@@ -3,5 +3,5 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:Irrigatus.View;assembly=IPGarden.View"
              x:Class="Irrigatus.View.RootPage"
-             Title="TabbedPage">
+             Title="Irrigatus">
 </TabbedPage>

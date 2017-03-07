@@ -49,8 +49,8 @@
     <Compile Include="Model\RelayPanel.cs" />
     <Compile Include="Model\WateringStation.cs" />
     <Compile Include="ViewModel\WateringStationViewModel.cs" />
-    <Compile Include="View\AddWateringStationModalPage.xaml.cs">
-      <DependentUpon>AddWateringStationModalPage.xaml</DependentUpon>
+    <Compile Include="View\AddEditWateringStationModalPage.xaml.cs">
+      <DependentUpon>AddEditWateringStationModalPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -150,7 +150,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="View\AddWateringStationModalPage.xaml">
+    <EmbeddedResource Include="View\AddEditWateringStationModalPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

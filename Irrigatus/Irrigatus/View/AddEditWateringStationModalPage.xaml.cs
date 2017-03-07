@@ -11,7 +11,6 @@ using Irrigatus.ViewModel;
 
 namespace Irrigatus.View
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddEditWateringStationModalPage : ContentPage
     {
         WateringStationViewModel wateringStationViewModel;
@@ -37,12 +36,12 @@ namespace Irrigatus.View
             wateringStationViewModel.wateringTime = Int32.Parse(entryWateringTime.Text);
             if (wateringStationViewModel.SaveWateringStation())
                 await DisplayAlert("Info", string.Concat("Station ", wateringStationViewModel.fullName, " added."), "OK");
-            await Navigation.PopModalAsync();
+            await Navigation.PopAsync();
         }
 
         private async void CancelButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            await Navigation.PopAsync();
         }
     }
 }

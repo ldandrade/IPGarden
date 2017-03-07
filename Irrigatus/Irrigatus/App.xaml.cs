@@ -21,7 +21,7 @@ namespace Irrigatus
         {
             InitializeComponent();
 
-            MainPage = new Irrigatus.View.RootPage();
+            MainPage = new NavigationPage(new Irrigatus.View.RootPage());
             restService = new ArduinoRestService();
         }
 

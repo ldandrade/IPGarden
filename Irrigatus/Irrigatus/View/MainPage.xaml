@@ -33,10 +33,10 @@
                 <Label Grid.Column="1" Text="Name" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
                 <Label Grid.Column="2" Text="Active" VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
             </Grid>
-            <ListView x:Name="stationsList" BackgroundColor="Transparent">
+            <ListView x:Name="stationsList">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <SwitchCell OnChanged="OnItemToggled"/>
+                        <SwitchCell Text="{Binding fullName}" OnChanged="OnItemToggled"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
