@@ -27,6 +27,11 @@ namespace Irrigatus.Database
             return database.Table<WateringStation>().Where(i => i.guid == guid).FirstOrDefaultAsync();
         }
 
+        public Task<WateringStation> GetWateringStationAsync(int number)
+        {
+            return database.Table<WateringStation>().Where(i => i.number == number).FirstOrDefaultAsync();
+        }
+
         public async Task<int> SaveWateringStationAsync(WateringStation wateringStation)
         {
             WateringStation existingStation = await database.Table<WateringStation>().Where(i => i.guid == wateringStation.guid).FirstOrDefaultAsync();

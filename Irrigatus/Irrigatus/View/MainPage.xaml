@@ -39,16 +39,13 @@
             <ListView x:Name="stationsList">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <SwitchCell Text="{Binding fullName}" OnChanged="OnItemToggled"/>
+                        <SwitchCell Text="{Binding fullName}" OnChanged="OnItemToggled" Tapped="EditButtonClicked"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackLayout Orientation="Horizontal">
-                <Button Text="Add" HorizontalOptions="FillAndExpand" Clicked="AddButtonClicked"/>
-                <Button Text="Edit" HorizontalOptions="FillAndExpand" Clicked="EditButtonClicked"/>
-                <Button Text="Delete" HorizontalOptions="FillAndExpand" Clicked="DeleteButtonClicked"/>
-            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
-
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddButtonClicked"/>
+    </ContentPage.ToolbarItems>
 </ContentPage>

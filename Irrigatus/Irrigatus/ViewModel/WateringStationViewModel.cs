@@ -23,6 +23,28 @@ namespace Irrigatus.ViewModel
             this.active = false;
         }
 
+        public async Task<bool> RetrieveWateringStation(int stationNumber)
+        {
+            WateringStation result = new WateringStation();
+            try
+            {
+                result = await App.Database.GetWateringStationAsync(stationNumber);
+                if (result != null)
+                {
+                    this.fullName = result.fullName;
+                    this.guid = result.guid;
+                    this.name = result.name;
+                    this.number = result.number;
+                    this.wateringTime = result.wateringTime;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
         public async Task<bool> SaveWateringStation()
         {
             int result = 0;

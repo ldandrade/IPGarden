@@ -55,9 +55,19 @@ namespace Irrigatus.View
             stationsList.ItemsSource = await AllWateringStationViewModel.RetrieveWateringStationsAsync();
         }
 
-        private void EditButtonClicked(object sender, EventArgs e)
+        private async void EditButtonClicked(object sender, EventArgs e)
         {
-
+            SwitchCell toggledSwitch = (SwitchCell) sender;
+            string stationID = toggledSwitch.Text.Substring(0, toggledSwitch.Text.IndexOf(" "));
+            WateringStationViewModel selectedStation = new WateringStationViewModel();
+            bool stationFound = await selectedStation.RetrieveWateringStation(Int32.Parse(stationID));
+            if (stationFound)
+            {
+                await Navigation.PushAsync(new AddEditWateringStationModalPage(selectedStation));
+                stationsList.ItemsSource = await AllWateringStationViewModel.RetrieveWateringStationsAsync();
+            }
+            else
+                await DisplayAlert("Error", string.Concat("Failed to locate station ", stationID, " on the database"), "OK");
         }
 
         private void DeleteButtonClicked(object sender, EventArgs e)
