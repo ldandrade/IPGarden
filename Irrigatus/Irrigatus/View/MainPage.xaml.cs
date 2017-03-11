@@ -59,7 +59,7 @@ namespace Irrigatus.View
         {
             SwitchCell toggledSwitch = (SwitchCell) sender;
             string stationID = toggledSwitch.Text.Substring(0, toggledSwitch.Text.IndexOf(" "));
-            WateringStationViewModel selectedStation = new WateringStationViewModel();
+            WateringStationViewModel selectedStation = new WateringStationViewModel(Int32.Parse(stationID));
             bool stationFound = await selectedStation.RetrieveWateringStation(Int32.Parse(stationID));
             if (stationFound)
             {

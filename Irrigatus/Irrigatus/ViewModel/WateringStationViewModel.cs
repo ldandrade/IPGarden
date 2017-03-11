@@ -23,6 +23,24 @@ namespace Irrigatus.ViewModel
             this.active = false;
         }
 
+        public WateringStationViewModel(int stationNumber)
+        {
+            WateringStation checkExistingStation = App.Database.GetWateringStationAsync(stationNumber).Result;
+            if (checkExistingStation == null)
+            {
+                this.guid = Guid.NewGuid().ToString();
+                this.active = false;
+            }
+            else
+            {
+                this.guid = checkExistingStation.guid;
+                this.number = checkExistingStation.number;
+                this.name = checkExistingStation.name;
+                this.fullName = checkExistingStation.fullName;
+                this.active = checkExistingStation.active;
+            }
+        }
+
         public async Task<bool> RetrieveWateringStation(int stationNumber)
         {
             WateringStation result = new WateringStation();
@@ -58,6 +76,23 @@ namespace Irrigatus.ViewModel
             try
             {
                 result = await App.Database.SaveWateringStationAsync(wateringStation);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public async Task<bool> DeleteWateringStation()
+        {
+            int result = 0;
+            WateringStation wateringStation = new WateringStation();
+            wateringStation.guid = this.guid;
+            wateringStation.number = this.number;
+            try
+            {
+                result = await App.Database.DeleteWateringStationAsync(wateringStation);
             }
             catch
             {
