@@ -38,6 +38,7 @@ namespace Irrigatus.ViewModel
                 this.name = checkExistingStation.name;
                 this.fullName = checkExistingStation.fullName;
                 this.active = checkExistingStation.active;
+                this.wateringTime = checkExistingStation.wateringTime;
             }
         }
 

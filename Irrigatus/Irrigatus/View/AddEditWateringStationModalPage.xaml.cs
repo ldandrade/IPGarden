@@ -25,7 +25,8 @@ namespace Irrigatus.View
             InitializeComponent();
             entryRelayPanelStationNumber.Text = wateringStationViewModel.number.ToString();
             entryWateringStationName.Text = wateringStationViewModel.name;
-            entryWateringTime.Text = wateringStationViewModel.wateringTime.ToString();
+            stepperWateringTimeValue.Text = wateringStationViewModel.wateringTime.ToString();
+            stepperWateringTime.Value = Int32.Parse(stepperWateringTimeValue.Text);
         }
 
         private async void OkButtonClicked(object sender, EventArgs e)
@@ -33,7 +34,7 @@ namespace Irrigatus.View
             wateringStationViewModel = new WateringStationViewModel(Int32.Parse(entryRelayPanelStationNumber.Text));
             wateringStationViewModel.number = Int32.Parse(entryRelayPanelStationNumber.Text);
             wateringStationViewModel.name = entryWateringStationName.Text;
-            wateringStationViewModel.wateringTime = Int32.Parse(entryWateringTime.Text);
+            wateringStationViewModel.wateringTime = Int32.Parse(stepperWateringTimeValue.Text);
             bool stationAdded = await wateringStationViewModel.SaveWateringStation();
             if (stationAdded)
                 await DisplayAlert("Info", string.Concat("Station ", wateringStationViewModel.fullName, " added."), "OK");
@@ -52,6 +53,11 @@ namespace Irrigatus.View
             if (stationDeleted)
                 await DisplayAlert("Info", string.Concat("Station ", wateringStationViewModel.fullName, " deleted."), "OK");
             await Navigation.PopAsync();
+        }
+
+        private void ChangedWateringTime(object sender, ValueChangedEventArgs e)
+        {
+            stepperWateringTimeValue.Text = stepperWateringTime.Value.ToString();
         }
     }
 }

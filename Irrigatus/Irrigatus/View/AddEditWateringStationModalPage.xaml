@@ -3,21 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Irrigatus.View.AddEditWateringStationModalPage">
     <ContentPage.Content>
-        <TableView Intent="Form">
-            <TableRoot>
-                <TableSection x:Name="TableSectionNewWateringStation" Title="Add new watering station:">
-                    <EntryCell x:Name="entryRelayPanelStationNumber" Label="Relay Panel Station Number:" Keyboard="Text"/>
-                    <EntryCell x:Name="entryWateringStationName" Label="Watering Station Name:" Keyboard="Text"/>
-                    <EntryCell x:Name="entryWateringTime" Label="Watering Time:" Keyboard="Numeric"/>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Button Text="Ok" Clicked="OkButtonClicked" HorizontalOptions="FillAndExpand"/>
-                            <Button Text="Cancel" Clicked="CancelButtonClicked" HorizontalOptions="FillAndExpand"/>
-                        </StackLayout>
-                    </ViewCell>
-                </TableSection>
-            </TableRoot>
-        </TableView>
+        <StackLayout Margin="10,10,10,10">
+            <Label Text="Add new watering station:"/>
+            <Label Text="Relay Panel Station Number:"/>
+            <Entry x:Name="entryRelayPanelStationNumber" Keyboard="Numeric"/>
+            <Label Text="Watering Station Name:"/>
+            <Entry x:Name="entryWateringStationName" Keyboard="Text"/>
+            <Label Text="Watering Time (Minutes):"/>
+            <StackLayout Orientation="Horizontal">
+                <Stepper x:Name="stepperWateringTime" HorizontalOptions="FillAndExpand" ValueChanged="ChangedWateringTime"/>
+                <Label x:Name="stepperWateringTimeValue" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Ok" Clicked="OkButtonClicked" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Cancel" Clicked="CancelButtonClicked" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Delete" Clicked="DeleteButtonClicked"/>

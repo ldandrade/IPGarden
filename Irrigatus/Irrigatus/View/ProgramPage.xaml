@@ -24,7 +24,7 @@
                 <Label Grid.Column="3" Text="Start" VerticalOptions="Center" HorizontalOptions="Start" />
                 <Label Grid.Column="4" Text="Days" VerticalOptions="Center" HorizontalOptions="Start" />
             </Grid>
-            <ListView x:Name="stationsList" BackgroundColor="Transparent" ItemsSource="stations">
+            <ListView x:Name="eventsList" BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -46,11 +46,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackLayout Orientation="Horizontal">
-                <Button Text="Add" HorizontalOptions="FillAndExpand"/>
-                <Button Text="Edit" HorizontalOptions="FillAndExpand"/>
-                <Button Text="Remove" HorizontalOptions="FillAndExpand"/>
-            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddButtonClicked"/>
+    </ContentPage.ToolbarItems>
 </ContentPage>

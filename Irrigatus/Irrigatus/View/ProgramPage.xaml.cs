@@ -16,5 +16,11 @@ namespace Irrigatus.View
         {
             InitializeComponent();
         }
+
+        private async void AddButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddEditWateringEventPage());
+            //eventsList.ItemsSource = await AllWateringEventViewModel.RetrieveWateringEventsAsync();
+        }
     }
 }

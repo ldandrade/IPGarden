@@ -69,10 +69,5 @@ namespace Irrigatus.View
             else
                 await DisplayAlert("Error", string.Concat("Failed to locate station ", stationID, " on the database"), "OK");
         }
-
-        private void DeleteButtonClicked(object sender, EventArgs e)
-        {
-
-        }
     }
 }
