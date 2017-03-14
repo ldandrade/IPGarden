@@ -8,13 +8,19 @@ using Irrigatus.Model;
 
 namespace Irrigatus.ViewModel
 {
-    class WateringEventViewModel
+    public class WateringEventViewModel
     {
         public string guid { get; set; }
-        public int stationGUID { get; set; }
+        public string stationFullName { get; set; }
         public int wateringTime { get; set; }
         public string startTime { get; set; }
-        public string wateringDays { get; set; }
+        public bool sunday { get; set; }
+        public bool monday { get; set; }
+        public bool tuesday { get; set; }
+        public bool wednesday { get; set; }
+        public bool thursday { get; set; }
+        public bool friday { get; set; }
+        public bool saturday { get; set; }
 
         public WateringEventViewModel()
         {
@@ -31,10 +37,16 @@ namespace Irrigatus.ViewModel
             else
             {
                 this.guid = checkExistingEvent.guid;
-                this.stationGUID = checkExistingEvent.stationGUID;
+                this.stationFullName = checkExistingEvent.stationFullName;
                 this.wateringTime = checkExistingEvent.wateringTime;
                 this.startTime = checkExistingEvent.startTime;
-                this.wateringDays = checkExistingEvent.wateringDays;
+                this.sunday = checkExistingEvent.sunday;
+                this.monday = checkExistingEvent.monday;
+                this.tuesday = checkExistingEvent.tuesday;
+                this.wednesday = checkExistingEvent.wednesday;
+                this.thursday = checkExistingEvent.thursday;
+                this.friday = checkExistingEvent.friday;
+                this.saturday = checkExistingEvent.saturday;
             }
         }
 
@@ -47,10 +59,16 @@ namespace Irrigatus.ViewModel
                 if (result != null)
                 {
                     this.guid = result.guid;
-                    this.stationGUID = result.stationGUID;
+                    this.stationFullName = result.stationFullName;
                     this.wateringTime = result.wateringTime;
-                    this.wateringDays = result.wateringDays;
                     this.startTime = result.startTime;
+                    this.sunday = result.sunday;
+                    this.monday = result.monday;
+                    this.tuesday = result.tuesday;
+                    this.wednesday = result.wednesday;
+                    this.thursday = result.thursday;
+                    this.friday = result.friday;
+                    this.saturday = result.saturday;
                 }
             }
             catch
@@ -65,10 +83,16 @@ namespace Irrigatus.ViewModel
             int result = 0;
             WateringEvent wateringEvent = new WateringEvent();
             wateringEvent.guid = this.guid;
-            wateringEvent.stationGUID = this.stationGUID;
+            wateringEvent.stationFullName = this.stationFullName;
             wateringEvent.startTime = this.startTime;
             wateringEvent.wateringTime = this.wateringTime;
-            wateringEvent.wateringDays = this.wateringDays;
+            wateringEvent.sunday = this.sunday;
+            wateringEvent.monday = this.monday;
+            wateringEvent.tuesday = this.tuesday;
+            wateringEvent.wednesday = this.wednesday;
+            wateringEvent.thursday = this.thursday;
+            wateringEvent.friday = this.friday;
+            wateringEvent.saturday = this.saturday;
             try
             {
                 result = await App.Database.SaveWateringEventAsync(wateringEvent);

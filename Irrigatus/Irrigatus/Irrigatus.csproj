@@ -44,6 +44,7 @@
     <Compile Include="Model\SensorPanel.cs" />
     <Compile Include="Model\SensorVariables.cs" />
     <Compile Include="Model\WateringEvent.cs" />
+    <Compile Include="ViewModel\AllWateringEventViewModel.cs" />
     <Compile Include="ViewModel\AllWateringStationViewModel.cs" />
     <Compile Include="Service\ArduinoRestService.cs" />
     <Compile Include="Model\RelayPanel.cs" />

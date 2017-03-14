@@ -15,9 +15,26 @@ namespace Irrigatus.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddEditWateringEventPage : ContentPage
     {
+        WateringEventViewModel wateringEventViewModel;
+
         public AddEditWateringEventPage()
         {
             InitializeComponent();
+        }
+
+        public AddEditWateringEventPage(WateringEventViewModel eventViewModel)
+        {
+            InitializeComponent();
+            wateringEventViewModel = eventViewModel;
+            stepperWateringTimeValue.Text = eventViewModel.wateringTime.ToString();
+            //tpickerStartTime.Time = new TimeSpan(eventViewModel.startTime;
+            switchSunday.On = eventViewModel.sunday;
+            switchMonday.On = eventViewModel.monday;
+            switchTuesday.On = eventViewModel.tuesday;
+            switchWednesday.On = eventViewModel.wednesday;
+            switchThursday.On = eventViewModel.thursday;
+            switchFriday.On = eventViewModel.friday;
+            switchSaturday.On = eventViewModel.saturday;
         }
 
         protected override async void OnAppearing()
@@ -28,10 +45,34 @@ namespace Irrigatus.View
             {
                 pickerRelayPanelStationNumber.Items.Add(station.fullName);
             }
+            if (wateringEventViewModel != null)
+                pickerRelayPanelStationNumber.SelectedIndex = pickerRelayPanelStationNumber.Items.IndexOf(wateringEventViewModel.stationFullName);
         }
 
     private async void OkButtonClicked(object sender, EventArgs e)
         {
+            wateringEventViewModel = new WateringEventViewModel();
+            WateringStationViewModel wateringStationViewModel = new WateringStationViewModel();
+            string wateringStationFullName = pickerRelayPanelStationNumber.Items[pickerRelayPanelStationNumber.SelectedIndex];
+            bool existingStation = await wateringStationViewModel.RetrieveWateringStation(Int32.Parse(wateringStationFullName.Substring(0, wateringStationFullName.IndexOf(" "))));
+            if (existingStation)
+            {
+                wateringEventViewModel.stationFullName = wateringStationViewModel.fullName;
+                wateringEventViewModel.wateringTime = Int32.Parse(stepperWateringTimeValue.Text);
+                wateringEventViewModel.startTime = tpickerStartTime.Time.ToString();
+                wateringEventViewModel.sunday = switchSunday.On;
+                wateringEventViewModel.monday = switchMonday.On;
+                wateringEventViewModel.tuesday = switchTuesday.On;
+                wateringEventViewModel.wednesday = switchWednesday.On;
+                wateringEventViewModel.thursday = switchThursday.On;
+                wateringEventViewModel.friday = switchFriday.On;
+                wateringEventViewModel.saturday = switchSaturday.On;
+                bool stationAdded = await wateringEventViewModel.SaveWateringEvent();
+                if (stationAdded)
+                    await DisplayAlert("Info", string.Concat("Event added."), "OK");
+            }
+            else
+                await DisplayAlert("Error", string.Concat("Error loading station."), "OK");
             await Navigation.PopAsync();
         }
 
