@@ -5,17 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Irrigatus.Model;
+using System.ComponentModel;
 
 namespace Irrigatus.ViewModel
 {
-    public class WateringStationViewModel
+    public class WateringStationViewModel : INotifyPropertyChanged
     {
-        public string guid { get; set; }
-        public int number { get; set; }
-        public string name { get; set; }
-        public bool active { get; set; }
-        public int wateringTime { get; set; }
-        public string fullName { get; set; }
+        private string guid;
+        private int number;
+        private string name;
+        private bool active;
+        private int wateringTime;
+        private string fullName;
 
         public WateringStationViewModel()
         {
@@ -41,6 +42,138 @@ namespace Irrigatus.ViewModel
                 this.wateringTime = checkExistingStation.wateringTime;
             }
         }
+
+        // ######################### gETTER AND SETTER OPERATIONS ##############################
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public string GUID
+        {
+            set
+            {
+                if (guid != value)
+                {
+                    guid = value;
+
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this,
+                            new PropertyChangedEventArgs("GUID"));
+                    }
+                }
+            }
+            get
+            {
+                return guid;
+            }
+        }
+
+        public int Number
+        {
+            set
+            {
+                if (number != value)
+                {
+                    number = value;
+
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this,
+                            new PropertyChangedEventArgs("Number"));
+                    }
+                }
+            }
+            get
+            {
+                return number;
+            }
+        }
+
+        public string Name
+        {
+            set
+            {
+                if (name != value)
+                {
+                    name = value;
+
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this,
+                            new PropertyChangedEventArgs("Name"));
+                    }
+                }
+            }
+            get
+            {
+                return name;
+            }
+        }
+
+        public bool Active
+        {
+            set
+            {
+                if (active != value)
+                {
+                    active = value;
+
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this,
+                            new PropertyChangedEventArgs("Active"));
+                    }
+                }
+            }
+            get
+            {
+                return active;
+            }
+        }
+
+        public int WateringTime
+        {
+            set
+            {
+                if (wateringTime != value)
+                {
+                    wateringTime = value;
+
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this,
+                            new PropertyChangedEventArgs("WateringTime"));
+                    }
+                }
+            }
+            get
+            {
+                return wateringTime;
+            }
+        }
+
+        public string FullName
+        {
+            set
+            {
+                if (fullName != value)
+                {
+                    fullName = value;
+
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this,
+                            new PropertyChangedEventArgs("FullName"));
+                    }
+                }
+            }
+            get
+            {
+                return fullName;
+            }
+        }
+
+        // ######################### MODEL OPERATIONS ##############################
 
         public async Task<bool> RetrieveWateringStation(int stationNumber)
         {

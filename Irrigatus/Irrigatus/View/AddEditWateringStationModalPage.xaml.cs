@@ -14,6 +14,7 @@ namespace Irrigatus.View
     public partial class AddEditWateringStationModalPage : ContentPage
     {
         WateringStationViewModel wateringStationViewModel;
+        AllWateringStationViewModel wateringStationsViewModel;
 
         public AddEditWateringStationModalPage()
         {
@@ -23,21 +24,21 @@ namespace Irrigatus.View
         public AddEditWateringStationModalPage(WateringStationViewModel wateringStationViewModel)
         {
             InitializeComponent();
-            entryRelayPanelStationNumber.Text = wateringStationViewModel.number.ToString();
-            entryWateringStationName.Text = wateringStationViewModel.name;
-            stepperWateringTimeValue.Text = wateringStationViewModel.wateringTime.ToString();
+            entryRelayPanelStationNumber.Text = wateringStationViewModel.Number.ToString();
+            entryWateringStationName.Text = wateringStationViewModel.Name;
+            stepperWateringTimeValue.Text = wateringStationViewModel.WateringTime.ToString();
             stepperWateringTime.Value = Int32.Parse(stepperWateringTimeValue.Text);
         }
 
         private async void OkButtonClicked(object sender, EventArgs e)
         {
             wateringStationViewModel = new WateringStationViewModel(Int32.Parse(entryRelayPanelStationNumber.Text));
-            wateringStationViewModel.number = Int32.Parse(entryRelayPanelStationNumber.Text);
-            wateringStationViewModel.name = entryWateringStationName.Text;
-            wateringStationViewModel.wateringTime = Int32.Parse(stepperWateringTimeValue.Text);
+            wateringStationViewModel.Number = Int32.Parse(entryRelayPanelStationNumber.Text);
+            wateringStationViewModel.Name = entryWateringStationName.Text;
+            wateringStationViewModel.WateringTime = Int32.Parse(stepperWateringTimeValue.Text);
             bool stationAdded = await wateringStationViewModel.SaveWateringStation();
             if (stationAdded)
-                await DisplayAlert("Info", string.Concat("Station ", wateringStationViewModel.fullName, " added."), "OK");
+                await DisplayAlert("Info", string.Concat("Station ", wateringStationViewModel.FullName, " added."), "OK");
             await Navigation.PopAsync();
         }
 
@@ -51,7 +52,7 @@ namespace Irrigatus.View
             wateringStationViewModel = new WateringStationViewModel(Int32.Parse(entryRelayPanelStationNumber.Text));
             bool stationDeleted = await wateringStationViewModel.DeleteWateringStation();
             if (stationDeleted)
-                await DisplayAlert("Info", string.Concat("Station ", wateringStationViewModel.fullName, " deleted."), "OK");
+                await DisplayAlert("Info", string.Concat("Station ", wateringStationViewModel.FullName, " deleted."), "OK");
             await Navigation.PopAsync();
         }
 

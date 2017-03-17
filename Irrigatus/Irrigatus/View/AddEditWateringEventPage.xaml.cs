@@ -16,15 +16,18 @@ namespace Irrigatus.View
     public partial class AddEditWateringEventPage : ContentPage
     {
         WateringEventViewModel wateringEventViewModel;
+        AllWateringStationViewModel wateringStationsViewModel;
 
         public AddEditWateringEventPage()
         {
             InitializeComponent();
+            wateringStationsViewModel = new AllWateringStationViewModel();
         }
 
         public AddEditWateringEventPage(WateringEventViewModel eventViewModel)
         {
             InitializeComponent();
+            wateringStationsViewModel = new AllWateringStationViewModel();
             wateringEventViewModel = eventViewModel;
             stepperWateringTimeValue.Text = eventViewModel.wateringTime.ToString();
             //tpickerStartTime.Time = new TimeSpan(eventViewModel.startTime;
@@ -40,10 +43,10 @@ namespace Irrigatus.View
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            ObservableCollection<WateringStationViewModel> pickerList = await AllWateringStationViewModel.RetrieveWateringStationsAsync();
+            ObservableCollection<WateringStationViewModel> pickerList = await wateringStationsViewModel.RetrieveWateringStationsFromDBAsync();
             foreach (WateringStationViewModel station in pickerList)
             {
-                pickerRelayPanelStationNumber.Items.Add(station.fullName);
+                pickerRelayPanelStationNumber.Items.Add(station.FullName);
             }
             if (wateringEventViewModel != null)
                 pickerRelayPanelStationNumber.SelectedIndex = pickerRelayPanelStationNumber.Items.IndexOf(wateringEventViewModel.stationFullName);
@@ -57,7 +60,7 @@ namespace Irrigatus.View
             bool existingStation = await wateringStationViewModel.RetrieveWateringStation(Int32.Parse(wateringStationFullName.Substring(0, wateringStationFullName.IndexOf(" "))));
             if (existingStation)
             {
-                wateringEventViewModel.stationFullName = wateringStationViewModel.fullName;
+                wateringEventViewModel.stationFullName = wateringStationViewModel.FullName;
                 wateringEventViewModel.wateringTime = Int32.Parse(stepperWateringTimeValue.Text);
                 wateringEventViewModel.startTime = tpickerStartTime.Time.ToString();
                 wateringEventViewModel.sunday = switchSunday.On;

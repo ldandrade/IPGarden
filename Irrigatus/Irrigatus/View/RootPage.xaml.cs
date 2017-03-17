@@ -16,7 +16,6 @@ namespace Irrigatus.View
         public RootPage()
         {
             InitializeComponent();
-
             Children.Add(new MainPage());
             Children.Add(new ProgramPage());
             Children.Add(new SettingsPage());

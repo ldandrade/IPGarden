@@ -26,9 +26,9 @@ namespace Irrigatus.Service
         }
 
 
-        public async Task<int> ActivateSwitchAsync(string stationID)
+        public async Task<bool> ActivateSwitchAsync(string stationID)
         {
-            Uri uri = new Uri(baseUri, String.Concat("relay?params=",stationID)); ;
+            Uri uri = new Uri(baseUri, String.Concat("relayctrl?params=",stationID)); ;
 
             try
             {
@@ -39,11 +39,37 @@ namespace Irrigatus.Service
                     relayPanel = JsonConvert.DeserializeObject<RelayPanel>(content);
                 }
             }
-            catch
+            catch (InvalidOperationException ex)
             {
-                return -1;
+                throw ex;
             }
-            return relayPanel.return_value;
+            if (relayPanel.return_value == 0)
+                return false;
+            else
+                return true;
+        }
+
+        public async Task<bool> GetSwitchStateAsync(string stationID)
+        {
+            Uri uri = new Uri(baseUri, String.Concat("relaystate?params=", stationID)); ;
+
+            try
+            {
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    relayPanel = JsonConvert.DeserializeObject<RelayPanel>(content);
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw ex;
+            }
+            if (relayPanel.return_value == 0)
+                return false;
+            else
+                return true;
         }
 
         public async Task<int> ReadTemperatureAsync()
@@ -57,9 +83,9 @@ namespace Irrigatus.Service
                     sensorPanel = JsonConvert.DeserializeObject<SensorPanel>(content);
                 }
             }
-            catch (Exception ex)
+            catch (InvalidOperationException ex)
             {
-                Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                throw ex;
             }
             return sensorPanel.variables.temperature;
         }
@@ -75,9 +101,9 @@ namespace Irrigatus.Service
                     sensorPanel = JsonConvert.DeserializeObject<SensorPanel>(content);
                 }
             }
-            catch (Exception ex)
+            catch (InvalidOperationException ex)
             {
-                Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                throw ex;
             }
             return sensorPanel.variables.humidity;
         }
