@@ -17,7 +17,7 @@ namespace Irrigatus.Service
         HttpClient client;
         static Uri baseUri = new Uri("http://192.168.0.101/");
         RelayPanel relayPanel;
-        SensorPanel sensorPanel;
+        DHTSensorMeasurement dhtSensorMeasurement;
 
         public ArduinoRestService()
         {
@@ -76,36 +76,38 @@ namespace Irrigatus.Service
         {
             try
             {
-                var response = await client.GetAsync(baseUri);
+                Uri uri = new Uri(baseUri, "gettemp"); ;
+                var response = await client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    sensorPanel = JsonConvert.DeserializeObject<SensorPanel>(content);
+                    dhtSensorMeasurement = JsonConvert.DeserializeObject<DHTSensorMeasurement>(content);
                 }
             }
             catch (InvalidOperationException ex)
             {
                 throw ex;
             }
-            return sensorPanel.variables.temperature;
+            return dhtSensorMeasurement.return_value;
         }
 
         public async Task<int> ReadHumidityAsync()
         {
             try
             {
-                var response = await client.GetAsync(baseUri);
+                Uri uri = new Uri(baseUri, "gethum"); ;
+                var response = await client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    sensorPanel = JsonConvert.DeserializeObject<SensorPanel>(content);
+                    dhtSensorMeasurement = JsonConvert.DeserializeObject<DHTSensorMeasurement>(content);
                 }
             }
             catch (InvalidOperationException ex)
             {
                 throw ex;
             }
-            return sensorPanel.variables.humidity;
+            return dhtSensorMeasurement.return_value;
         }
     }
 }

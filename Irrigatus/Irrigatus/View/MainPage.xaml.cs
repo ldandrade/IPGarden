@@ -24,7 +24,7 @@ namespace Irrigatus.View
             {
                 serviceActivityIndicator.IsRunning = true;
                 await wateringStationsViewModel.RetrieveWateringStationsFromDBAsync();
-                await wateringStationsViewModel.UpdateWateringStationRelayStatusAsync();
+                //await wateringStationsViewModel.UpdateWateringStationRelayStatusAsync();
                 this.BindingContext = this.wateringStationsViewModel;
                 int temperature = await App.restService.ReadTemperatureAsync();
                 int humidity = await App.restService.ReadHumidityAsync();

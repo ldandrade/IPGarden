@@ -15,7 +15,7 @@ namespace Irrigatus
     public partial class App : Application
     {
         public static ArduinoRestService restService;
-        static IrrigatusDatabase database;
+        private static IrrigatusDatabase database;
 
         public App()
         {

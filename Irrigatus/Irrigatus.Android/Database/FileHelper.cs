@@ -1,10 +1,9 @@
-﻿using Irrigatus.Droid;
-using System;
+﻿using Irrigatus.Database;
 using System.IO;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(FileHelper))]
-namespace Irrigatus.Droid
+[assembly: Dependency(typeof(Irrigatus.Droid.Database.FileHelper))]
+namespace Irrigatus.Droid.Database
 {
     public class FileHelper : IFileHelper
     {

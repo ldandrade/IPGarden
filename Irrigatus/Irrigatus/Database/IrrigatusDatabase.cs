@@ -12,9 +12,9 @@ namespace Irrigatus.Database
         public IrrigatusDatabase(string dbPath)
         {
             database = new SQLiteAsyncConnection(dbPath);
-            database.CreateTableAsync<SensorMeasure>().Wait();
             database.CreateTableAsync<WateringEvent>().Wait();
             database.CreateTableAsync<WateringStation>().Wait();
+            database.CreateTableAsync<SensorMeasure>().Wait();
         }
 
         // ---------------------------------- WATERING STATION OPERATIONS -------------------------------

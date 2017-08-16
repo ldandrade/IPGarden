@@ -1,14 +1,11 @@
-﻿using SQLite;
-
-namespace Irrigatus.Model
+﻿namespace Irrigatus.Model
 {
-    public class SensorPanel
+    class DHTSensorMeasurement
     {
-        [PrimaryKey]
+        public int return_value { get; set; }
         public string id { get; set; }
         public string name { get; set; }
         public string hardware { get; set; }
         public bool connected { get; set; }
-        public SensorVariables variables { get; set; }
     }
 }
