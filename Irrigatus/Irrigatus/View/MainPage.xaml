@@ -12,14 +12,14 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Temperature" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
-                <Label x:Name="labelTempValue" Text="0" VerticalOptions="Center"/>
+                <Label x:Name="labelTempValue" Text="0" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <Label Text="Humidity" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
-                <Label x:Name="labelHumValue" Text="0" VerticalOptions="Center"/>
+                <Label x:Name="labelHumValue" Text="0" VerticalOptions="Center" HorizontalOptions="Center"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Button Text="History"/>
+                <ActivityIndicator x:Name="serviceActivityIndicator" Grid.Row="1" Grid.Column="2" IsVisible="True" IsRunning="False" HorizontalOptions="CenterAndExpand" Color="Green"/>
                 <Button Text="Refresh" Clicked="RefreshButtonClicked"/>
-                <ActivityIndicator x:Name="sensorActivityIndicator" Grid.Row="1" Grid.Column="2" IsVisible="True" IsRunning="False" HorizontalOptions="CenterAndExpand"/>
             </StackLayout>
             <Label Text="Stations" HorizontalOptions="CenterAndExpand"/>
             <ProgressBar x:Name="wateringProgressBar" IsVisible="True"/>
@@ -36,10 +36,10 @@
                 <Label Grid.Column="1" Text="Name" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
                 <Label Grid.Column="2" Text="Active" VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
             </Grid>
-            <ListView x:Name="stationsList">
+            <ListView x:Name="stationsList" ItemsSource="{Binding Path=WateringStationsList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <SwitchCell Text="{Binding fullName}" OnChanged="OnItemToggled" Tapped="EditButtonClicked"/>
+                        <SwitchCell Text="{Binding FullName}" On="{Binding Active, Mode=TwoWay}" OnChanged="OnItemToggled" Tapped="EditButtonClicked"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

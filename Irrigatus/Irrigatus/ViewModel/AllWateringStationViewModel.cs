@@ -9,29 +9,53 @@ using System.Collections.ObjectModel;
 
 namespace Irrigatus.ViewModel
 {
-    public static class AllWateringStationViewModel
+    public class AllWateringStationViewModel
     {
-        private static ObservableCollection<WateringStationViewModel> wateringStationsViewModel;
-        private static List<WateringStation> wateringStations;
+        private ObservableCollection<WateringStationViewModel> wateringStationsList;
+        private List<WateringStation> wateringStations;
 
-        public static async Task<ObservableCollection<WateringStationViewModel>> RetrieveWateringStationsAsync()
+        public async Task<ObservableCollection<WateringStationViewModel>> RetrieveWateringStationsFromDBAsync()
         {
             wateringStations = await App.Database.GetWateringStationsAsync();
-            wateringStationsViewModel = new ObservableCollection<WateringStationViewModel>();
+            wateringStationsList = new ObservableCollection<WateringStationViewModel>();
             WateringStationViewModel stationViewModel = new WateringStationViewModel();
             foreach (WateringStation station in wateringStations)
             {
                 stationViewModel = new WateringStationViewModel();
-                stationViewModel.guid = station.guid;
-                stationViewModel.number = station.number;
-                stationViewModel.name = station.name;
-                stationViewModel.wateringTime = station.wateringTime;
-                stationViewModel.fullName = station.fullName;
-                stationViewModel.active = station.active;
-                wateringStationsViewModel.Add(stationViewModel);
+                stationViewModel.GUID = station.guid;
+                stationViewModel.Number = station.number;
+                stationViewModel.Name = station.name;
+                stationViewModel.WateringTime = station.wateringTime;
+                stationViewModel.FullName = station.fullName;
+                stationViewModel.Active = station.active;
+                wateringStationsList.Add(stationViewModel);
             }
-            return wateringStationsViewModel;
+            return wateringStationsList;
         }
 
+        public async Task UpdateWateringStationRelayStatusAsync()
+        {
+            try
+            {
+                foreach (WateringStationViewModel wsvm in wateringStationsList)
+                    wsvm.Active = await App.restService.GetSwitchStateAsync(wsvm.Number.ToString());
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw ex;
+            }
+        }
+
+        public ObservableCollection<WateringStationViewModel> WateringStationsList
+        {
+            set
+            {
+                wateringStationsList = value;
+            }
+            get
+            {
+                return wateringStationsList;
+            }
+        }
     }
 }

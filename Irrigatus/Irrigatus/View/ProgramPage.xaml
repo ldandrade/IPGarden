@@ -12,45 +12,35 @@
             <Label Text="Events" HorizontalOptions="CenterAndExpand"/>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Text="#" VerticalOptions="Center" HorizontalOptions="End" />
-                <Label Grid.Column="1" Text="Name" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
-                <Label Grid.Column="2" Text="Min" VerticalOptions="Center" HorizontalOptions="Fill" />
-                <Label Grid.Column="3" Text="Start" VerticalOptions="Center" HorizontalOptions="Start" />
-                <Label Grid.Column="4" Text="Days" VerticalOptions="Center" HorizontalOptions="Start" />
+                <Label Grid.Column="0" Text="Station" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+                <Label Grid.Column="1" Text="Min" VerticalOptions="Center" HorizontalOptions="Center" />
+                <Label Grid.Column="2" Text="Start" VerticalOptions="Center" HorizontalOptions="Center" />
             </Grid>
-            <ListView x:Name="stationsList" BackgroundColor="Transparent" ItemsSource="stations">
+            <ListView x:Name="eventsList" BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <ViewCell Tapped="EditCellTapped">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="{Binding Number}" VerticalOptions="Center" HorizontalOptions="End" />
-                                <Label Grid.Column="1" Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
-                                <Label Grid.Column="2" Text="{Binding WateringTime}" HorizontalOptions="Fill" />
-                                <Label Grid.Column="3" Text="{Binding StartTime}" HorizontalOptions="Start" />
-                                <Label Grid.Column="4" Text="{Binding Days}" HorizontalOptions="Start" />
+                                <Label Grid.Column="0" Text="{Binding stationFullName}" HorizontalOptions="StartAndExpand" />
+                                <Label Grid.Column="1" Text="{Binding wateringTime}" HorizontalOptions="Center" />
+                                <Label Grid.Column="2" Text="{Binding startTime}" HorizontalOptions="Center" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackLayout Orientation="Horizontal">
-                <Button Text="Add" HorizontalOptions="FillAndExpand"/>
-                <Button Text="Edit" HorizontalOptions="FillAndExpand"/>
-                <Button Text="Remove" HorizontalOptions="FillAndExpand"/>
-            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddButtonClicked"/>
+    </ContentPage.ToolbarItems>
 </ContentPage>

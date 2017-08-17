@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Irrigatus.View.AddEditWateringEventPage">
+    <ContentPage.Content>
+        <Grid Margin="10,10,10,10">
+            <StackLayout VerticalOptions="FillAndExpand">
+                <Label Text="Watering Station:"/>
+                <Picker x:Name="pickerRelayPanelStationNumber"/>
+                <Label Text="Watering Time (Minutes):"/>
+                <StackLayout Orientation="Horizontal">
+                    <Stepper x:Name="stepperWateringTime" HorizontalOptions="FillAndExpand" ValueChanged="ChangedWateringTime"/>
+                    <Label x:Name="stepperWateringTimeValue" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <Label Text="Start Time:"/>
+                <TimePicker x:Name="tpickerStartTime"/>
+                <Label Text="Watering Days:"/>
+                <TableView>
+                    <TableRoot>
+                        <TableSection>
+                            <SwitchCell x:Name="switchSunday" Text="Sunday"/>
+                            <SwitchCell x:Name="switchMonday" Text="Monday"/>
+                            <SwitchCell x:Name="switchTuesday" Text="Tuesday"/>
+                            <SwitchCell x:Name="switchWednesday" Text="Wednesday"/>
+                            <SwitchCell x:Name="switchThursday" Text="Thursday"/>
+                            <SwitchCell x:Name="switchFriday" Text="Friday"/>
+                            <SwitchCell x:Name="switchSaturday" Text="Saturday"/>
+                        </TableSection>
+                    </TableRoot>
+                </TableView>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Ok" Clicked="OkButtonClicked" HorizontalOptions="FillAndExpand"/>
+                    <Button Text="Cancel" Clicked="CancelButtonClicked" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Clicked="DeleteButtonClicked"/>
+    </ContentPage.ToolbarItems>
+</ContentPage>

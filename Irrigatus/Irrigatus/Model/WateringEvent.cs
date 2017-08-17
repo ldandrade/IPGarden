@@ -6,11 +6,15 @@ namespace Irrigatus.Model
     {
         [PrimaryKey]
         public string guid { get; set; }
-        public int stationNumber { get; set; }
-        public string stationName { get; set; }
+        public string stationFullName { get; set; }
         public int wateringTime { get; set; }
         public string startTime { get; set; }
-        public string wateringDays { get; set; }
-        public string stationFullName { get; set; }
+        public bool sunday { get; set; }
+        public bool monday { get; set; }
+        public bool tuesday { get; set; }
+        public bool wednesday { get; set; }
+        public bool thursday { get; set; }
+        public bool friday { get; set; }
+        public bool saturday { get; set; }
     }
 }

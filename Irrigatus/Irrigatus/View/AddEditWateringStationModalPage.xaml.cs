@@ -14,6 +14,7 @@ namespace Irrigatus.View
     public partial class AddEditWateringStationModalPage : ContentPage
     {
         WateringStationViewModel wateringStationViewModel;
+        AllWateringStationViewModel wateringStationsViewModel;
 
         public AddEditWateringStationModalPage()
         {
@@ -23,26 +24,41 @@ namespace Irrigatus.View
         public AddEditWateringStationModalPage(WateringStationViewModel wateringStationViewModel)
         {
             InitializeComponent();
-            entryRelayPanelStationNumber.Text = wateringStationViewModel.number.ToString();
-            entryWateringStationName.Text = wateringStationViewModel.name;
-            entryWateringTime.Text = wateringStationViewModel.wateringTime.ToString();
+            entryRelayPanelStationNumber.Text = wateringStationViewModel.Number.ToString();
+            entryWateringStationName.Text = wateringStationViewModel.Name;
+            stepperWateringTimeValue.Text = wateringStationViewModel.WateringTime.ToString();
+            stepperWateringTime.Value = Int32.Parse(stepperWateringTimeValue.Text);
         }
 
         private async void OkButtonClicked(object sender, EventArgs e)
         {
-            wateringStationViewModel = new WateringStationViewModel();
-            wateringStationViewModel.number = Int32.Parse(entryRelayPanelStationNumber.Text);
-            wateringStationViewModel.name = entryWateringStationName.Text;
-            wateringStationViewModel.wateringTime = Int32.Parse(entryWateringTime.Text);
+            wateringStationViewModel = new WateringStationViewModel(Int32.Parse(entryRelayPanelStationNumber.Text));
+            wateringStationViewModel.Number = Int32.Parse(entryRelayPanelStationNumber.Text);
+            wateringStationViewModel.Name = entryWateringStationName.Text;
+            wateringStationViewModel.WateringTime = Int32.Parse(stepperWateringTimeValue.Text);
             bool stationAdded = await wateringStationViewModel.SaveWateringStation();
             if (stationAdded)
-                await DisplayAlert("Info", string.Concat("Station ", wateringStationViewModel.fullName, " added."), "OK");
+                await DisplayAlert("Info", string.Concat("Station ", wateringStationViewModel.FullName, " added."), "OK");
             await Navigation.PopAsync();
         }
 
         private async void CancelButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
+        }
+
+        private async void DeleteButtonClicked(object sender, EventArgs e)
+        {
+            wateringStationViewModel = new WateringStationViewModel(Int32.Parse(entryRelayPanelStationNumber.Text));
+            bool stationDeleted = await wateringStationViewModel.DeleteWateringStation();
+            if (stationDeleted)
+                await DisplayAlert("Info", string.Concat("Station ", wateringStationViewModel.FullName, " deleted."), "OK");
+            await Navigation.PopAsync();
+        }
+
+        private void ChangedWateringTime(object sender, ValueChangedEventArgs e)
+        {
+            stepperWateringTimeValue.Text = stepperWateringTime.Value.ToString();
         }
     }
 }
