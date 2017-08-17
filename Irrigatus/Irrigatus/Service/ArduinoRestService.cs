@@ -39,7 +39,7 @@ namespace Irrigatus.Service
                     relayPanel = JsonConvert.DeserializeObject<RelayPanel>(content);
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 return -1;
             }

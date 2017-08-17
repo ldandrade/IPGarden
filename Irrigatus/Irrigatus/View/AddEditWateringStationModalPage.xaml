@@ -19,7 +19,4 @@
             </TableRoot>
         </TableView>
     </ContentPage.Content>
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Delete" Clicked="DeleteButtonClicked"/>
-    </ContentPage.ToolbarItems>
 </ContentPage>

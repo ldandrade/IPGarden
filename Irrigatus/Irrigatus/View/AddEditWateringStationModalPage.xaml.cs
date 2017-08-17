@@ -30,7 +30,7 @@ namespace Irrigatus.View
 
         private async void OkButtonClicked(object sender, EventArgs e)
         {
-            wateringStationViewModel = new WateringStationViewModel(Int32.Parse(entryRelayPanelStationNumber.Text));
+            wateringStationViewModel = new WateringStationViewModel();
             wateringStationViewModel.number = Int32.Parse(entryRelayPanelStationNumber.Text);
             wateringStationViewModel.name = entryWateringStationName.Text;
             wateringStationViewModel.wateringTime = Int32.Parse(entryWateringTime.Text);
@@ -42,15 +42,6 @@ namespace Irrigatus.View
 
         private async void CancelButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
-        }
-
-        private async void DeleteButtonClicked(object sender, EventArgs e)
-        {
-            wateringStationViewModel = new WateringStationViewModel(Int32.Parse(entryRelayPanelStationNumber.Text));
-            bool stationDeleted = await wateringStationViewModel.DeleteWateringStation();
-            if (stationDeleted)
-                await DisplayAlert("Info", string.Concat("Station ", wateringStationViewModel.fullName, " deleted."), "OK");
             await Navigation.PopAsync();
         }
     }

@@ -44,16 +44,5 @@ namespace Irrigatus.Database
                 return database.InsertAsync(wateringStation).Result;
             }
         }
-
-        public async Task<int> DeleteWateringStationAsync(WateringStation wateringStation)
-        {
-            int result = 0;
-            WateringStation existingStation = await database.Table<WateringStation>().Where(i => i.guid == wateringStation.guid).FirstOrDefaultAsync();
-            if (existingStation != null)
-            {
-                result = database.DeleteAsync(wateringStation).Result;
-            }
-            return result;
-        }
     }
 }
