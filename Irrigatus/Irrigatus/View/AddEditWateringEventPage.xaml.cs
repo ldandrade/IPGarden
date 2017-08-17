@@ -12,7 +12,7 @@ using System.Collections.ObjectModel;
 
 namespace Irrigatus.View
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    //[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddEditWateringEventPage : ContentPage
     {
         WateringEventViewModel wateringEventViewModel;
