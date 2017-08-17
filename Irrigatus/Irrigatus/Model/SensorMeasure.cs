@@ -4,6 +4,7 @@ namespace Irrigatus.Model
 {
     public class SensorMeasure
     {
+        [PrimaryKey]
         public string guid { get; set; }
         public int temperature { get; set; }
         public int humidity { get; set; }

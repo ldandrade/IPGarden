@@ -1,5 +1,5 @@
 ﻿
-namespace Irrigatus
+namespace Irrigatus.Database
 {
     public interface IFileHelper
     {
